@@ -1,9 +1,16 @@
+
 {
   "name": "react-webpack-setup",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start:client": "webpack-dev-server"
+    "start:client": "webpack-dev-server",
+    "start:server": "nodemon",
+    "test:client": "nyc mocha test/client/**/*_spec.js --require test/client/helper --recursive --exit",
+    "test:server": "nyc mocha test/server/**/*_spec.js --require test/server/helper --recursive --exit",
+    "seed": "node db/seeds",
+    "build": "webpack -p",
+    "start": "yarn build && node index"
   },
   "author": "Students",
   "license": "ISC",
@@ -15,25 +22,27 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "chai": "^4.1.2",
     "copy-webpack-plugin": "^4.4.1",
     "css-loader": "^0.28.9",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "file-loader": "^1.1.8",
     "html-webpack-plugin": "^2.30.1",
+    "jsdom": "^11.7.0",
+    "mocha": "^5.0.5",
     "node-sass": "^4.7.2",
+    "nyc": "^11.6.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.2",
+    "supertest": "^3.0.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
-    "axios": "^0.18.0",
-    "bulma": "^0.7.1",
     "express": "^4.16.3",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-router-dom": "^4.3.1",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.2"
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
   }
 }
