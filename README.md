@@ -21,20 +21,17 @@ HTML | SCSS | JavaScript (ES6) | React | Webpack | Sass
 
 ### Build ###
 
-<strong>Code:</strong>
+<strong>Code:</strong> Used for loop to iterate over the numbers checking whether the number is perfect, abundant, or deficient
 ```
 getClassification = (integer) => {
-
   if (isNaN(integer) || (integer <= 0)) {
-    return 'Please input a greater number than 0!';
+    return 'Please input a greater number than 0';
   }
-
-  var i = 1,
-    aliquotSum = 0;
-  while(i < integer){
-    if (integer % i === 0)
-      aliquotSum = aliquotSum + i;
-    i++;
+  let aliquotSum = 0;
+  for (let i = 1; i < integer; i++) {
+    if (integer % i === 0) {
+      aliquotSum += i;
+    }
   }
 
   if (aliquotSum < integer) {
