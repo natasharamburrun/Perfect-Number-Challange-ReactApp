@@ -10,8 +10,8 @@ class App extends React.Component {
 
   getClassification = (integer) => {
 
-    if (integer <= 0) {
-      return 'Please input an integer number!';
+    if (isNaN(integer) || (integer <= 0)) {
+      return 'Please input a greater number than 0!';
     }
 
     var i = 1,
@@ -22,11 +22,15 @@ class App extends React.Component {
       i++;
     }
 
-    if (aliquotSum < integer) return `${integer} is a deficient number`;
-    else if (aliquotSum > integer) return `${integer} is a abundant number`;
-    return `${integer} is a perfect number`;
-
+    if (aliquotSum < integer) {
+      return `Answer: ${integer} is a deficient number`;
+    } else if (aliquotSum > integer) {
+      return `Answer: ${integer} is an abundant number`;
+    } else {
+      return `Answer: ${integer} is a perfect number`;
+    }
   }
+
 
   handleChange = ({ target: { name, value }}) => {
     this.setState({ [name]: value });
@@ -34,6 +38,7 @@ class App extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    e.target.reset();
     const result = this.getClassification(this.state.input);
     return this.setState({result});
   }
@@ -41,8 +46,10 @@ class App extends React.Component {
   render() {
     return (
       <main>
-        <h1>Check whether a number is Perfect, Abundant, or Deficient</h1>
+        <h1>Perfect number challenge</h1>
+        <hr/>
         <form onSubmit={this.handleSubmit}>
+          <h2>Check whether a number is Perfect, Abundant, or Deficient</h2>
           <label>Please enter a number: </label>
           <input type="number" name="input" onChange={this.handleChange} />
           <button type="submit" name="button">Submit</button>
