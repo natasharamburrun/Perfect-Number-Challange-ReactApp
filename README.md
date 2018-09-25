@@ -26,7 +26,7 @@ HTML | SCSS | JavaScript (ES6) | React | Webpack | Sass
 getClassification = (integer) => {
 
   if (isNaN(integer) || (integer <= 0)) {
-    return 'Please input an integer number!';
+    return 'Please input a greater number than 0!';
   }
 
   var i = 1,
