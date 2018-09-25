@@ -10,7 +10,7 @@ class App extends React.Component {
 
   getClassification = (integer) => {
 
-    if (isNaN(integer) || (integer <= 0)) {
+    if (integer <= 0) {
       return 'Please input an integer number!';
     }
 
@@ -21,6 +21,7 @@ class App extends React.Component {
         aliquotSum = aliquotSum + i;
       i++;
     }
+
     if (aliquotSum < integer) return `${integer} is a deficient number`;
     else if (aliquotSum > integer) return `${integer} is a abundant number`;
     return `${integer} is a perfect number`;
@@ -38,12 +39,11 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log(this.state);
     return (
       <main>
         <h1>Check whether a number is Perfect, Abundant, or Deficient</h1>
         <form onSubmit={this.handleSubmit}>
-          <label>Please enter a number</label>
+          <label>Please enter a number </label>
           <input type="number" name="input" onChange={this.handleChange} />
           <button type="submit" name="button">Submit</button>
           {this.state.result && <h3>{this.state.result}</h3>}
