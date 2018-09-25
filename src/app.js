@@ -43,10 +43,10 @@ class App extends React.Component {
       <main>
         <h1>Check whether a number is Perfect, Abundant, or Deficient</h1>
         <form onSubmit={this.handleSubmit}>
-          <label>Please enter a number </label>
+          <label>Please enter a number: </label>
           <input type="number" name="input" onChange={this.handleChange} />
           <button type="submit" name="button">Submit</button>
-          {this.state.result && <h3>{this.state.result}</h3>}
+          <h3>{this.state.result}</h3>
         </form>
       </main>
     );
